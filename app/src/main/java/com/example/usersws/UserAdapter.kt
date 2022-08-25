@@ -32,7 +32,7 @@ class UserAdapter(private val users:List<User>): RecyclerView.Adapter<UserAdapte
         val user = users[position]
 
         with(holder){
-            binding.tvName.text = user.nombre
+            binding.tvName.text = user.getFullName()
             binding.tvOrder.text = (position+1).toString()
 
             //carga de imagen
