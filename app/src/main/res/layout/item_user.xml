@@ -3,10 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/card_height"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/common_padding_default"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?attr/selectableItemBackground"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgPhoto"
         android:contentDescription="@string/description_user_photo"
         android:layout_width="@dimen/card_img_size"
@@ -20,6 +22,7 @@
 
     <TextView
         android:id="@+id/tvOrder"
+        android:layout_marginEnd="@dimen/common_padding_default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="1"
@@ -33,7 +36,8 @@
         android:id="@+id/tvName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/imgPhoto"
+        android:layout_marginHorizontal="@dimen/common_padding_default"
+        app:layout_constraintStart_toEndOf="@id/imgPhoto"
         app:layout_constraintEnd_toStartOf="@id/tvOrder"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
