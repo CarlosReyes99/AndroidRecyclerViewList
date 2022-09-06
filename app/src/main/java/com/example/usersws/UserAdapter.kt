@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.usersws.databinding.ItemUserBinding
 
-class UserAdapter(private val users:List<User>): RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+class UserAdapter(private val users:List<User>, private val listener: OnClickListener): RecyclerView.Adapter<UserAdapter.ViewHolder>(){
 
     private lateinit var context: Context
 
@@ -17,6 +17,10 @@ class UserAdapter(private val users:List<User>): RecyclerView.Adapter<UserAdapte
     inner class ViewHolder(view: View):RecyclerView.ViewHolder(view){
 
         val binding= ItemUserBinding.bind(view)
+
+        fun setListener(user: User){
+            binding.root.setOnClickListener { listener.onClick(user) }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,6 +36,7 @@ class UserAdapter(private val users:List<User>): RecyclerView.Adapter<UserAdapte
         val user = users[position]
 
         with(holder){
+            setListener(user)
             binding.tvName.text = user.getFullName()
             binding.tvOrder.text = (position+1).toString()
 
@@ -39,6 +44,7 @@ class UserAdapter(private val users:List<User>): RecyclerView.Adapter<UserAdapte
             Glide.with(context)
                 .load(user.url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .circleCrop()
                 .into(binding.imgPhoto)
 
 

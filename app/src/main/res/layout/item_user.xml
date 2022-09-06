@@ -8,7 +8,7 @@
     android:background="?attr/selectableItemBackground"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/imgPhoto"
         android:contentDescription="@string/description_user_photo"
         android:layout_width="@dimen/card_img_size"
