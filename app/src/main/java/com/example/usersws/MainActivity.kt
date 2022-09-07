@@ -1,15 +1,15 @@
 package com.example.usersws
 
 import android.content.Context
-import android.content.DialogInterface
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
+
 import com.example.usersws.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.dialog_title)
                 .setView(dialogView)
-                .setPositiveButton(R.string.dialog_confirm) { dialogInterface, i ->
+                .setPositiveButton(R.string.dialog_confirm) { _, _ ->
                     val username =
                         dialogView.findViewById<TextInputEditText>(R.id.etUsername).text.toString()
                     Log.i("input edit: ", username)
@@ -43,6 +43,9 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                     }
                     Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show()
 
+                }
+                .setNeutralButton("Invitado"){ _, _ ->
+                    Toast.makeText(this, "Accediste como invitado", Toast.LENGTH_SHORT).show()
                 }
 
                 .show()
